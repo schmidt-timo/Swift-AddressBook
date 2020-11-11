@@ -9,10 +9,22 @@ import Foundation
 
 class AddressBook: Codable {
     
+    var addressCards: [AddressCard]
+    
     init(){
         addressCards = []
     }
     
-    var addressCards: [AddressCard]
+    func add(card: AddressCard){
+        addressCards.append(card)
+    }
+    
+    func remove(card: AddressCard){
+        let index = addressCards.firstIndex(of: card)
+        if let _index = index {
+            addressCards.remove(at: _index)
+        }
+    }
+    
     
 }
