@@ -22,8 +22,15 @@ class AddressBook: Codable {
     func remove(card: AddressCard){
         let index = addressCards.firstIndex(of: card)
         if let _index = index {
+            for i in addressCards {
+                let friendIndex = i.friends.firstIndex(of: card)
+                if let _friendIndex = friendIndex {
+                    i.remove(friend: card)
+                }
+            }
             addressCards.remove(at: _index)
         }
+        
     }
     
     
