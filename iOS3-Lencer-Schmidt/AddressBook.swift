@@ -29,11 +29,11 @@ class AddressBook: Codable {
         }
     }
     
-//    func sort(book: AddressBook) {
-//        for card in addressCards {
-//            card.nachname
-//        }
-//    }
+    func sort() {
+        addressCards.sort { (card1, card2) -> Bool in
+            return card1.nachname < card2.nachname
+        }
+    }
     
     func save(toFile path: String) {
         let url = URL(fileURLWithPath: path)
