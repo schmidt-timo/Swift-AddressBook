@@ -7,7 +7,11 @@
 
 import Foundation
 
-class AddressCard {
+class AddressCard : Codable, Equatable {
+    
+    static func == (lhs: AddressCard, rhs: AddressCard) -> Bool {
+        <#code#>
+    }
     
     let vorname : String
     let nachname : String
@@ -28,5 +32,19 @@ class AddressCard {
         hobbies = []
         friends = []
     }
+    
+    func add(hobby: String) {
+        hobbies.append(hobby)
+    }
+    
+    func remove(hobby: String) {
+        let index = hobbies.firstIndex(of: hobby)
+        hobbies.remove(at: index)
+    }
+    
+    func add(friend: AddressCard) {}
+    
+    func remove (friend: AddressCard) {}
+    
     
 }
