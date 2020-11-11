@@ -42,4 +42,17 @@ class AddressBook: Codable {
             try? data.write(to: url)
         }
     }
+    
+    class func addressBook(fromFile path: String) -> AddressBook? {
+        let url = URL(fileURLWithPath: path)
+        var result : AddressBook? = nil
+        if let data = try? Data(contentsOf: url) {
+            let decoder = PropertyListDecoder()
+            if let addressbook = try? decoder.decode(self, from: data) {
+                result = addressbook
+            }
+        }
+        return result
+    }
+   
 }
