@@ -27,7 +27,6 @@ class AddressBook: Codable {
             }
             addressCards.remove(at: _index)
         }
-        
     }
     
     
