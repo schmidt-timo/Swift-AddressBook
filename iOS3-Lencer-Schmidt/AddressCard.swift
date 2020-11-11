@@ -9,8 +9,8 @@ import Foundation
 
 class AddressCard : Codable, Equatable {
     
-    static func == (lhs: AddressCard, rhs: AddressCard) -> Bool {
-        <#code#>
+    func == (left: AddressCard, right: AddressCard) -> Bool {
+        return left.nachname == right.nachname
     }
     
     let vorname : String
