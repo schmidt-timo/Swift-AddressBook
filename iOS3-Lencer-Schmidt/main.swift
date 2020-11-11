@@ -7,9 +7,7 @@
 
 import Foundation
 
-print("Hello, World!")
-
-let addressbook = AddressBook()
+var addressbook = AddressBook.addressBook(fromFile: )
 addressbook.sort()
 
 
