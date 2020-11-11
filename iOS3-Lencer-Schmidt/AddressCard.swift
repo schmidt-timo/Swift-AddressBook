@@ -39,12 +39,20 @@ class AddressCard : Codable, Equatable {
     
     func remove(hobby: String) {
         let index = hobbies.firstIndex(of: hobby)
-        hobbies.remove(at: index)
+        if let _index = index {
+            hobbies.remove(at: _index)
+        }
     }
     
-    func add(friend: AddressCard) {}
+    func add(friend: AddressCard) {
+        friends.append(friend)
+    }
     
-    func remove (friend: AddressCard) {}
-    
+    func remove (friend: AddressCard) {
+        let index = friends.firstIndex(of: friend)
+        if let _index = index {
+            friends.remove(at: _index)
+        }
+    }
     
 }
