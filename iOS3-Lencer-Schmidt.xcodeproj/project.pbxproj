@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C10088D255C26990014F8FC /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C10088C255C26990014F8FC /* AddressBook.swift */; };
 		853B500F255C22D00052DAFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B500E255C22D00052DAFE /* main.swift */; };
 		853B5017255C23BE0052DAFE /* AddressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B5016255C23BE0052DAFE /* AddressCard.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C10088C255C26990014F8FC /* AddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
 		853B500B255C22D00052DAFE /* iOS3-Lencer-Schmidt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "iOS3-Lencer-Schmidt"; sourceTree = BUILT_PRODUCTS_DIR; };
 		853B500E255C22D00052DAFE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		853B5016255C23BE0052DAFE /* AddressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCard.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				853B500E255C22D00052DAFE /* main.swift */,
 				853B5016255C23BE0052DAFE /* AddressCard.swift */,
+				0C10088C255C26990014F8FC /* AddressBook.swift */,
 			);
 			path = "iOS3-Lencer-Schmidt";
 			sourceTree = "<group>";
@@ -122,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C10088D255C26990014F8FC /* AddressBook.swift in Sources */,
 				853B5017255C23BE0052DAFE /* AddressCard.swift in Sources */,
 				853B500F255C22D00052DAFE /* main.swift in Sources */,
 			);
