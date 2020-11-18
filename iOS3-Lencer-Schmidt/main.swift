@@ -40,14 +40,23 @@ case "e", "E":
     let ort = read(withPrompt: "Ort: ")
     
     card = AddressCard(vorname: vorname, nachname: nachname, strasse: strasse, plz: plz ?? 0, ort: ort)
+    
+    // Nach Hobbies fragen
+    var hobbies = read(withPrompt: "Hobby: (Abbruch mit (Q))");
+    while (hobbies != "q" || hobbies != "Q") {
+        card.add(hobby: hobbies)
+        hobbies = read(withPrompt: "Hobby: (Abbruch mit (Q))")
+    }
+    
 case "s", "S":
     print("nix")
 case "l", "L":
     print("nix")
 case "q", "Q":
-    if card = AddressCard() {
-        addressbook?.add(card: card)
-    }
+    print()
+//    if card = AddressCard() {
+//        addressbook?.add(card: card)
+//    }
 default:
     print("nix")
 }
