@@ -35,6 +35,7 @@ class AddressBook: Codable {
         }
     }
     
+    // Save address book to file
     func save(toFile path: String) {
         let url = URL(fileURLWithPath: path)
         let encoder = PropertyListEncoder()
@@ -43,6 +44,7 @@ class AddressBook: Codable {
         }
     }
     
+    // Create address book from file
     class func addressBook(fromFile path: String) -> AddressBook? {
         let url = URL(fileURLWithPath: path)
         var result : AddressBook? = nil

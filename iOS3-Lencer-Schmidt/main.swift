@@ -26,9 +26,10 @@ func read(withPrompt: String) -> String {
     return ""
 }
 
+// Leere AddressCard erstellen
 var card: AddressCard
 
-let first = read(withPrompt: "(E)ingabe, (S)uche, (L)iste oder (Q)uit?")
+var first = read(withPrompt: "(E)ingabe, (S)uche, (L)iste oder (Q)uit?")
 
 switch(first) {
 case "e", "E":
@@ -39,36 +40,57 @@ case "e", "E":
     let plz = Int(read(withPrompt: "Postleitzahl: "))
     let ort = read(withPrompt: "Ort: ")
     
+    // Werte in Karte abspeichern
     card = AddressCard(vorname: vorname, nachname: nachname, strasse: strasse, plz: plz ?? 0, ort: ort)
     
     // Nach Hobbies fragen
-    var hobbies = read(withPrompt: "Hobby: (Abbruch mit (Q))");
-    while (hobbies != "q" || hobbies != "Q") {
-        card.add(hobby: hobbies)
+    var hobbies = ""
+    repeat {
         hobbies = read(withPrompt: "Hobby: (Abbruch mit (Q))")
-    }
+
+        if hobbies.isEmpty {
+            print("Du hast nichts eingegeben! Versuche es nochmal!")
+        }
+        else {
+            card.add(hobby: hobbies) // Hobby zur Addresscard hinzufügen
+        }
+    } while hobbies != "q" && hobbies != "Q"
     
 case "s", "S":
-    print("nix")
+    // Nachname erfragen
+    let searchName = read(withPrompt: "Nachname suchen: ")
+    // Leere AddressCard initialisieren? var addressCard
+//    // Gefundenes Ergebnis anzeigen
+//    if (suchName ist im Addressbuch) {
+//         addressCard = treffer
+//    }
+//    else {
+//        print("Nicht gefunden!")
+//    }
+    // Zweites Menü anzeigen
+    let friendMenu = read(withPrompt: "(F)reund/in hinzufügen, (L)öschen oder (Z)urück?")
+    
+    switch(friendMenu) {
+        case "f", "F":
+            let friend = read(withPrompt: "Name Freund/in: ")
+            // Nach Addresskarte mit diesem Namen suchen
+//            card.add(friend: //adresskarte)
+        case "l", "L":
+            print("nix")
+        case "z", "Z":
+            print("nix")
+        default:
+            print("nix")
+        }
 case "l", "L":
     print("nix")
 case "q", "Q":
+    // Abspeichern
     print()
 //    if card = AddressCard() {
 //        addressbook?.add(card: card)
 //    }
 default:
-    print("nix")
-}
-
-let friendMenu = read(withPrompt: "(F)reund/in hinzufügen, (L)öschen oder (Z)urück?")
-switch(friendMenu) {
-case "f", "F":
-    print("nix")
-case "l", "L":
-    print("nix")
-case "z", "Z":
-    print("nix")
-default:
-    print("nix")
+    // erneut fragen
+    first = read(withPrompt: "(E)ingabe, (S)uche, (L)iste oder (Q)uit?")
 }
