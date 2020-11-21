@@ -80,6 +80,9 @@ repeat {
     //            card.add(friend: //adresskarte)
             case "l", "L":
                 print("nix")
+                // name von löschender Person erfragen
+                // nach passender card suchen
+                // addressbook.remove(card: card)
             case "z", "Z":
                 print("nix")
             default:
