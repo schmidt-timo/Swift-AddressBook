@@ -107,11 +107,7 @@ repeat {
                 print("nix")
             }
     case "l", "L":
-        print("nix")
-        
-        for entry in addressbook.addressCards {
-            print(entry.vorname)
-        }
+        printAddressbook()
         
     case "q", "Q":
         // Abspeichern
@@ -131,22 +127,48 @@ func fillWithData() -> AddressBook {
     addressbook = AddressBook()
 
     // Erste Karte
-    var card1 = AddressCard(vorname: "John", nachname: "Doe", strasse: "Hauptstraße 4", plz: 11223, ort: "Berlin")
+    let card1 = AddressCard(vorname: "John", nachname: "Doe", strasse: "Hauptstraße 4", plz: 11223, ort: "Berlin")
     card1.add(hobby: "Schwimmen")
     card1.add(hobby: "Fußball")
     
     addressbook.add(card: card1)
     
-    var card2 = AddressCard(vorname: "Max", nachname: "Mustermann", strasse: "Waldstraße 1", plz: 12345, ort: "Hamburg")
+    let card2 = AddressCard(vorname: "Max", nachname: "Mustermann", strasse: "Waldstraße 1", plz: 12345, ort: "Hamburg")
     card2.add(hobby: "Reiten")
+    card2.add(friend: card1)
     
     addressbook.add(card: card2)
     
-    var card3 = AddressCard(vorname: "Jane", nachname: "Smith", strasse: "Berliner Ring 100", plz: 54321, ort: "Frankfurt")
+    let card3 = AddressCard(vorname: "Jane", nachname: "Smith", strasse: "Berliner Ring 100", plz: 54321, ort: "Frankfurt")
     card3.add(hobby: "Bogenschießen")
     card3.add(hobby: "Kayak")
+    card3.add(friend: card1)
+    card3.add(friend: card2)
     
     addressbook.add(card: card3)
     
     return addressbook
+}
+
+func printAddressbook() {
+    
+    for card in addressbook.addressCards {
+        print("+-----------------------------------")
+        print("| " + card.vorname + " " + card.nachname)
+        print("| " + card.strasse)
+        print("| " + String(card.plz) + " " + card.ort)
+        
+        print ("| " + "Hobbies:")
+        for hobby in card.hobbies {
+            print("|   " + hobby)
+        }
+        
+        print ("| " + "Freunde:")
+        for friend in card.friends {
+            print("|   " + friend.vorname + " " + friend.nachname + ", " + String(friend.plz) + " " + friend.ort)
+        }
+        
+        print("+-----------------------------------")
+    }
+    
 }
