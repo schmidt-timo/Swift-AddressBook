@@ -18,7 +18,7 @@ if let book = readAddressbook {
 }
 
 // Mit Beispieldaten füllen
-addressbook = fillWithData()
+//addressbook = fillWithData()
 
 func read(withPrompt: String) -> String {
     print(withPrompt)
@@ -109,20 +109,16 @@ repeat {
             }
         }
     case "l", "L":
+        
         for card in addressbook.addressCards {
             printAddressCard(card: card)
         }
         
     case "q", "Q":
-        // Abspeichern
-        print("gespeichert!")
-        break
-    //    if card = AddressCard() {
-    //        addressbook?.add(card: card)
-    //    }
+        addressbook.save(toFile: "book.plist")
+        
     default:
-        // erneut fragen
-        start = read(withPrompt: "(E)ingabe, (S)uche, (L)iste oder (Q)uit?")
+        print("Eingabe ungültig!")
     }
 } while start != "q" && start != "Q"
 
