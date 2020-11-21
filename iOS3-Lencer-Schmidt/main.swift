@@ -71,32 +71,38 @@ repeat {
         
     case "s", "S":
         
-        // Leere AddressCard initialisieren? var addressCard
-    //    // Gefundenes Ergebnis anzeigen
-    //    if (suchName ist im Addressbuch) {
-    //         addressCard = treffer
-    //    }
-    //    else {
-    //        print("Nicht gefunden!")
-    //    }
-        // Zweites Menü anzeigen
-        let friendMenu = read(withPrompt: "(F)reund/in hinzufügen, (L)öschen oder (Z)urück?")
+        let searchName = read(withPrompt: "Nachname suchen: ")
+        let searchCard = addressbook.searchAddressCard(nachname: searchName)
         
-        switch(friendMenu) {
-            case "f", "F":
-                let friend = read(withPrompt: "Name Freund/in: ")
-                // Nach Addresskarte mit diesem Namen suchen
-    //            card.add(friend: //adresskarte)
-            case "l", "L":
-                print("nix")
-                // name von löschender Person erfragen
-                // nach passender card suchen
-                // addressbook.remove(card: card)
-            case "z", "Z":
-                print("nix")
-            default:
-                print("nix")
-            }
+        // Gefundene Karte ausgeben
+        if searchCard.nachname != "" {
+            printAddressCard(card: searchCard)
+            
+            let friendMenu = read(withPrompt: "(F)reund/in hinzufügen, (L)öschen oder (Z)urück?")
+            
+            switch(friendMenu) {
+            
+                case "f", "F":
+                    let friend = read(withPrompt: "Name Freund/in: ")
+                    let searchFriend = addressbook.searchAddressCard(nachname: friend)
+                    
+                    if searchFriend.nachname != "" {
+                        searchCard.add(friend: searchFriend)
+                    }
+                    
+                    print("'" + searchFriend.vorname + " " + searchFriend.nachname + "' hinzugefügt!")
+                    
+                case "l", "L":
+                    print("nix")
+                    // name von löschender Person erfragen
+                    // nach passender card suchen
+                    // addressbook.remove(card: card)
+                case "z", "Z":
+                    print("nix")
+                default:
+                    print("nix")
+                }
+        }
     case "l", "L":
         for card in addressbook.addressCards {
             printAddressCard(card: card)
@@ -165,25 +171,3 @@ func printAddressCard(card: AddressCard) {
     
 }
 
-func searchForAddressCard() {
-    
-    // Nachname erfragen
-    let searchName = read(withPrompt: "Nachname suchen: ")
-    
-    var searchCard : AddressCard
-    
-    var cardFound = false
-    
-    // Check, ob Name vorhanden ist
-    for card in addressbook.addressCards {
-        if card.nachname == searchName {
-            searchCard = card
-            cardFound = true
-        }
-    }
-    
-    if !cardFound {
-        print("wurde nicht gefunden!")
-    }
-
-}

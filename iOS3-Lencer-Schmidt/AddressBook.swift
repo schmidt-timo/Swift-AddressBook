@@ -56,5 +56,21 @@ class AddressBook: Codable {
         }
         return result
     }
+    
+    func searchAddressCard(nachname: String) -> AddressCard {
+        
+        // Nachname erfragen
+        var searchCard = AddressCard()
+            
+        // Check, ob Name vorhanden ist
+        for card in self.addressCards {
+            if card.nachname == nachname {
+                searchCard = card
+                break
+            }
+        }
+        
+        return searchCard
+    }
    
 }

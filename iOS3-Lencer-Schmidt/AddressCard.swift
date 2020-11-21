@@ -22,7 +22,15 @@ class AddressCard : Codable, Equatable {
     var hobbies : [String]
     var friends : [AddressCard]
     
-//    init() {}
+    init() {
+        self.vorname = ""
+        self.nachname = ""
+        self.strasse = ""
+        self.plz = 0
+        self.ort = ""
+        hobbies = []
+        friends = []
+    }
     
     init(vorname: String, nachname: String, strasse: String,
          plz: Int, ort: String) {
