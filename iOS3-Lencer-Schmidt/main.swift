@@ -99,7 +99,7 @@ repeat {
             }
     case "l", "L":
         for card in addressbook.addressCards {
-            printAddressbook(card)
+            printAddressCard(card: card)
         }
         
     case "q", "Q":
