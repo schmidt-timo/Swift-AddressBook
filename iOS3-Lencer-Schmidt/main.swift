@@ -20,17 +20,6 @@ if let book = readAddressbook {
 // Mit Beispieldaten füllen
 addressbook = fillWithData()
 
-//// File einlesen
-//var addressbook = AddressBook.addressBook(fromFile: "book.plist")
-//
-//// überprüfen, ob Optional etwas enthält
-//if let book = addressbook {
-//
-//}
-//else {
-//    addressbook = AddressBook() // sonst leeres AddressBook erstellen
-//}
-
 func read(withPrompt: String) -> String {
     print(withPrompt)
     let inputLine = readLine()
@@ -77,9 +66,11 @@ repeat {
         // Karte zum Adressbuch hinzufügen
         addressbook.add(card: card)
         
+        // Addressbuch sortieren
+        addressbook.sort()
+        
     case "s", "S":
-        // Nachname erfragen
-        let searchName = read(withPrompt: "Nachname suchen: ")
+        
         // Leere AddressCard initialisieren? var addressCard
     //    // Gefundenes Ergebnis anzeigen
     //    if (suchName ist im Addressbuch) {
@@ -171,4 +162,27 @@ func printAddressbook() {
         print("+-----------------------------------")
     }
     
+}
+
+func searchForAddressCard() {
+    
+    // Nachname erfragen
+    let searchName = read(withPrompt: "Nachname suchen: ")
+    
+    var searchCard : AddressCard
+    
+    var cardFound = false
+    
+    // Check, ob Name vorhanden ist
+    for card in addressbook.addressCards {
+        if card.nachname == searchName {
+            searchCard = card
+            cardFound = true
+        }
+    }
+    
+    if !cardFound {
+        print("wurde nicht gefunden!")
+    }
+
 }
