@@ -58,6 +58,9 @@ repeat {
             if hobbies.isEmpty {
                 print("Du hast nichts eingegeben! Versuche es nochmal!")
             }
+            else if hobbies == "q" || hobbies == "Q" {
+                break
+            }
             else {
                 card.add(hobby: hobbies) // Hobby zur Addresscard hinzufügen
             }
