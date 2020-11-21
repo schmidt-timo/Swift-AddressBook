@@ -98,7 +98,9 @@ repeat {
                 print("nix")
             }
     case "l", "L":
-        printAddressbook()
+        for card in addressbook.addressCards {
+            printAddressbook(card)
+        }
         
     case "q", "Q":
         // Abspeichern
@@ -141,10 +143,10 @@ func fillWithData() -> AddressBook {
     return addressbook
 }
 
-func printAddressbook() {
+func printAddressCard(card: AddressCard) {
     
-    for card in addressbook.addressCards {
         print("+-----------------------------------")
+    
         print("| " + card.vorname + " " + card.nachname)
         print("| " + card.strasse)
         print("| " + String(card.plz) + " " + card.ort)
@@ -160,7 +162,6 @@ func printAddressbook() {
         }
         
         print("+-----------------------------------")
-    }
     
 }
 
