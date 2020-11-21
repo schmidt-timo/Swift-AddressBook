@@ -103,10 +103,10 @@ repeat {
                     print("'" + removeName.vorname + " " + removeName.nachname + "' wurde gelöscht!")
                     
                 case "z", "Z":
-                    print("nix")
+                    break
                 default:
-                    print("nix")
-                }
+                    print("Eingabe ungültig!")
+            }
         }
     case "l", "L":
         for card in addressbook.addressCards {
