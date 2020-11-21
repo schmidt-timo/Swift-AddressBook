@@ -93,6 +93,7 @@ repeat {
     case "q", "Q":
         // Abspeichern
         print("gespeichert!")
+        break
     //    if card = AddressCard() {
     //        addressbook?.add(card: card)
     //    }
@@ -100,7 +101,4 @@ repeat {
         // erneut fragen
         start = read(withPrompt: "(E)ingabe, (S)uche, (L)iste oder (Q)uit?")
     }
-} while start != "e" && start != "E" &&
-        start != "s" && start != "S" &&
-        start != "l" && start != "L" &&
-        start != "q" && start != "Q"
+} while start != "q" && start != "Q"
