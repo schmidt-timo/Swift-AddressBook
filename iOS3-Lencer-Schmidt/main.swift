@@ -18,7 +18,7 @@ if let book = readAddressbook {
 }
 
 // Mit Beispieldaten füllen
-//addressbook = fillWithData()
+// addressbook = fillWithData()
 
 func read(withPrompt: String) -> String {
     print(withPrompt)
@@ -81,36 +81,41 @@ repeat {
         if searchCard.nachname != "" {
             printAddressCard(card: searchCard)
             
-            let friendMenu = read(withPrompt: "(F)reund/in hinzufügen, (L)öschen oder (Z)urück?")
+            var friendMenu = ""
             
-            switch(friendMenu) {
+            repeat {
+                friendMenu = read(withPrompt: "(F)reund/in hinzufügen, (L)öschen oder (Z)urück?")
             
-                case "f", "F":
-                    let friend = read(withPrompt: "Name Freund/in: ")
-                    let searchFriend = addressbook.searchAddressCard(nachname: friend)
+                switch(friendMenu) {
+            
+                    case "f", "F":
+                        let friend = read(withPrompt: "Name Freund/in: ")
+                        let searchFriend = addressbook.searchAddressCard(nachname: friend)
+                        
+                        if searchFriend.nachname != "" {
+                            searchCard.add(friend: searchFriend)
+                        }
+                        
+                        print("'" + searchFriend.vorname + " " + searchFriend.nachname + "' hinzugefügt!")
                     
-                    if searchFriend.nachname != "" {
-                        searchCard.add(friend: searchFriend)
-                    }
+                    case "l", "L":
                     
-                    print("'" + searchFriend.vorname + " " + searchFriend.nachname + "' hinzugefügt!")
-                    
-                case "l", "L":
-                    
-                    let removeName = addressbook.searchAddressCard(nachname: searchName)
-                    
-                    if removeName.nachname != "" {
-                        addressbook.remove(card: removeName)
-                    }
-                    
-                    print("'" + removeName.vorname + " " + removeName.nachname + "' wurde gelöscht!")
-                    
-                case "z", "Z":
-                    break
-                default:
-                    print("Eingabe ungültig!")
-            }
+                        let removeName = addressbook.searchAddressCard(nachname: searchName)
+                        
+                        if removeName.nachname != "" {
+                            addressbook.remove(card: removeName)
+                        }
+                        
+                        print("'" + removeName.vorname + " " + removeName.nachname + "' wurde gelöscht!")
+                        
+                    case "z", "Z":
+                        break
+                    default:
+                        print("Eingabe ungültig!")
+                }
+            } while friendMenu != "z" && friendMenu != "Z"
         }
+            
     case "l", "L":
         
         for card in addressbook.addressCards {
