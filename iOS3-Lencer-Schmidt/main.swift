@@ -74,7 +74,7 @@ repeat {
         
     case "s", "S":
         
-        let searchName = read(withPrompt: "Nachname suchen: ")
+        var searchName = read(withPrompt: "Nachname suchen: ")
         let searchCard = addressbook.searchAddressCard(nachname: searchName)
         
         // Gefundene Karte ausgeben

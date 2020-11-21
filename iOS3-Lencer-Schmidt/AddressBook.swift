@@ -64,7 +64,7 @@ class AddressBook: Codable {
             
         // Check, ob Name vorhanden ist
         for card in self.addressCards {
-            if card.nachname == nachname {
+            if card.nachname.lowercased() == nachname.lowercased() {
                 searchCard = card
                 break
             }
