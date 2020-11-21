@@ -7,14 +7,29 @@
 
 import Foundation
 
-// File einlesen
-var addressbook = AddressBook.addressBook(fromFile: "book.plist")
+// Adressbuch erstellen
+var addressbook = AddressBook()
 
-// überprüfen, ob Optional etwas enthält
-if let book = addressbook {}
-else {
-    addressbook = AddressBook() // sonst leeres AddressBook erstellen
+// File einlesen
+var readAddressbook = AddressBook.addressBook(fromFile: "book.plist")
+
+if let book = readAddressbook {
+    addressbook = readAddressbook!
 }
+
+// Mit Beispieldaten füllen
+addressbook = fillWithData()
+
+//// File einlesen
+//var addressbook = AddressBook.addressBook(fromFile: "book.plist")
+//
+//// überprüfen, ob Optional etwas enthält
+//if let book = addressbook {
+//
+//}
+//else {
+//    addressbook = AddressBook() // sonst leeres AddressBook erstellen
+//}
 
 func read(withPrompt: String) -> String {
     print(withPrompt)
@@ -60,7 +75,7 @@ repeat {
         } while hobbies != "q" && hobbies != "Q"
         
         // Karte zum Adressbuch hinzufügen
-        addressbook?.add(card: card)
+        addressbook.add(card: card)
         
     case "s", "S":
         // Nachname erfragen
@@ -93,6 +108,11 @@ repeat {
             }
     case "l", "L":
         print("nix")
+        
+        for entry in addressbook.addressCards {
+            print(entry.vorname)
+        }
+        
     case "q", "Q":
         // Abspeichern
         print("gespeichert!")
@@ -105,3 +125,28 @@ repeat {
         start = read(withPrompt: "(E)ingabe, (S)uche, (L)iste oder (Q)uit?")
     }
 } while start != "q" && start != "Q"
+
+
+func fillWithData() -> AddressBook {
+    addressbook = AddressBook()
+
+    // Erste Karte
+    var card1 = AddressCard(vorname: "John", nachname: "Doe", strasse: "Hauptstraße 4", plz: 11223, ort: "Berlin")
+    card1.add(hobby: "Schwimmen")
+    card1.add(hobby: "Fußball")
+    
+    addressbook.add(card: card1)
+    
+    var card2 = AddressCard(vorname: "Max", nachname: "Mustermann", strasse: "Waldstraße 1", plz: 12345, ort: "Hamburg")
+    card2.add(hobby: "Reiten")
+    
+    addressbook.add(card: card2)
+    
+    var card3 = AddressCard(vorname: "Jane", nachname: "Smith", strasse: "Berliner Ring 100", plz: 54321, ort: "Frankfurt")
+    card3.add(hobby: "Bogenschießen")
+    card3.add(hobby: "Kayak")
+    
+    addressbook.add(card: card3)
+    
+    return addressbook
+}
