@@ -59,6 +59,9 @@ repeat {
             }
         } while hobbies != "q" && hobbies != "Q"
         
+        // Karte zum Adressbuch hinzufügen
+        addressbook?.add(card: card)
+        
     case "s", "S":
         // Nachname erfragen
         let searchName = read(withPrompt: "Nachname suchen: ")
