@@ -93,10 +93,15 @@ repeat {
                     print("'" + searchFriend.vorname + " " + searchFriend.nachname + "' hinzugefügt!")
                     
                 case "l", "L":
-                    print("nix")
-                    // name von löschender Person erfragen
-                    // nach passender card suchen
-                    // addressbook.remove(card: card)
+                    
+                    let removeName = addressbook.searchAddressCard(nachname: searchName)
+                    
+                    if removeName.nachname != "" {
+                        addressbook.remove(card: removeName)
+                    }
+                    
+                    print("'" + removeName.vorname + " " + removeName.nachname + "' wurde gelöscht!")
+                    
                 case "z", "Z":
                     print("nix")
                 default:
