@@ -14,14 +14,14 @@ var addressbook = AddressBook()
 var readAddressbook = AddressBook.addressBook(fromFile: "book.plist")
 
 if let book = readAddressbook {
-    addressbook = readAddressbook!
+    addressbook = book
 }
 
 // Mit Beispieldaten füllen
 // addressbook = fillWithData()
 
 func read(withPrompt: String) -> String {
-    print(withPrompt)
+    print(withPrompt, terminator:" ")
     let inputLine = readLine()
 
     if let input = inputLine {
@@ -74,7 +74,7 @@ repeat {
         
     case "s", "S":
         
-        var searchName = read(withPrompt: "Nachname suchen: ")
+        let searchName = read(withPrompt: "Nachname suchen: ")
         let searchCard = addressbook.searchAddressCard(nachname: searchName)
         
         // Gefundene Karte ausgeben
